@@ -2,8 +2,10 @@
 # a DIR variable to be set.
 
 BUILD_DIR := build
+MYPACKAGE := rolox
+DIR := /Users/magdaolaru/Applications/Cosmin/craftingInterpretersRolox/java
 
-SOURCES := $(wildcard $(DIR)/com/craftinginterpreters/$(PACKAGE)/*.java)
+SOURCES := $(wildcard $(DIR)/com/craftinginterpreters/$(MYPACKAGE)/*.java)
 CLASSES := $(addprefix $(BUILD_DIR)/, $(SOURCES:.java=.class))
 
 JAVA_OPTIONS := -Werror
