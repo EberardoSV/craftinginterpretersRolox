@@ -1,11 +1,11 @@
-package com.craftinginterpreters.lox
+package com.craftinginterpreters.lox;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-Import static com.craftinginterpreters.lox.TokenType.*;
+import static com.craftinginterpreters.lox.TokenType.*;
 
 class Scanner
 {
@@ -52,6 +52,8 @@ class Scanner
 		}
 
 		tokens.add( new Token( EOF, "", null, line ) );
+
+		return tokens;
 	}
 
 	private void scanToken()
@@ -81,7 +83,7 @@ class Scanner
 				addToken( match( '=' ) ? LESS_EQUAL : BANG );
 				break;
 			case '>':
-				addToken( match( '=' ) ? GREATEREQUAL : BANG );
+				addToken( match( '=' ) ? GREATER_EQUAL : BANG );
 				break;
 
 			case '/':
@@ -212,12 +214,12 @@ class Scanner
 
 	private boolean isAtEnd()
 	{
-		return curent >= source.length();
+		return current >= source.length();
 	}
 
 	private char advance()
 	{
-		return source.charAt( curent++ );
+		return source.charAt( current++ );
 	}
 
 	private void addToken( TokenType type )
@@ -228,6 +230,6 @@ class Scanner
 	private void addToken( TokenType type, Object literal )
 	{
 		String text = source.substring( start, current );
-		tokens.add( new Token( type, text, literal, line );
+		tokens.add( new Token( type, text, literal, line ) );
 	}
 }
